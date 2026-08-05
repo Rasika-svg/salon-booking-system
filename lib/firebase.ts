@@ -12,12 +12,13 @@ import {
 } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDeEKKcnGE2mh44xU03R-o2XY0B6KfhZM0",
-  authDomain: "salonbooking-bdde8.firebaseapp.com",
-  projectId: "salonbooking-bdde8",
-  storageBucket: "salonbooking-bdde8.firebasestorage.app",
-  messagingSenderId: "402053754623",
-  appId: "1:402053754623:web:cc470d3d2c190c700266ca",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY!,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN!,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID!,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET!,
+  messagingSenderId:
+    process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID!,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID!,
 };
 
 const app = initializeApp(firebaseConfig);
