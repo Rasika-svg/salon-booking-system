@@ -220,7 +220,7 @@ const selectedServiceData = services.find(
 
         <div className="mt-8">
 
-          <label className="font-semibold">
+          <label className="block text-sm font-medium text-gray-900">
             Full Name
           </label>
 
