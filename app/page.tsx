@@ -222,6 +222,7 @@ const selectedServiceData = services.find(
         <p className="text-center text-gray-900 mt-2">
           Book Your Appointment
         </p>
+        </div>
 
         <div className="mt-8">
 
@@ -251,22 +252,23 @@ const selectedServiceData = services.find(
 </div>
         <div className="mt-5">
 
-          <label className="font-semibold">
-            Phone Number
-          </label>
+          <label className="block text-sm font-semibold text-gray-900 text-center">
+    Phone Number
+  </label>
 
-          <input
-    type="tel"
-    value={phone}
-    onChange={(e) => setPhone(e.target.value)}
-    className="w-full rounded-lg border border-gray-900 px-4 py-3"
-  />
+  <div className="relative mt-2">
+    <input
+      type="tel"
+      value={phone}
+      onChange={(e) => setPhone(e.target.value)}
+      className="w-full rounded-lg border border-gray-900 px-4 py-3"
+    />
 
-  {!phone && (
-    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-green-600 font-medium pointer-events-none">
-      WhatsApp Number
-    </span>
-  )}
+    {!phone && (
+      <span className="absolute inset-y-0 left-4 flex items-center text-green-600 font-medium pointer-events-none">
+        WhatsApp Number
+      </span>
+    )}
         </div>
 <div className="mt-5">
   <label className="font-semibold">
