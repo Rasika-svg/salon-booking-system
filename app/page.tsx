@@ -259,7 +259,6 @@ const selectedServiceData = services.find(
     type="tel"
     value={phone}
     onChange={(e) => setPhone(e.target.value)}
-    placeholder=""
     className="w-full rounded-lg border border-gray-900 px-4 py-3"
   />
 
