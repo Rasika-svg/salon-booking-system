@@ -208,7 +208,7 @@ const selectedServiceData = services.find(
 );
   return (
     <main className="min-h-screen bg-pink-50 flex items-center justify-center text-center p-5">
-    
+      <div className="text-center">
   <img
     src="/logo.png"
     alt="Silvester Salon Logo"
