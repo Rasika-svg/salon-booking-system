@@ -300,7 +300,7 @@ if (selectedDate) {
 
           <div className="bg-white rounded-xl p-10 text-center shadow">
 
-            <h2 className="text-xl font-semibold text-gray-500">
+            <h2 className="text-xl font-semibold text-gray-900">
               No bookings found
             </h2>
 

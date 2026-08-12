@@ -208,13 +208,18 @@ const selectedServiceData = services.find(
 );
   return (
     <main className="min-h-screen bg-pink-50 flex items-center justify-center p-5">
-      <div className="bg-white shadow-xl rounded-xl p-8 w-full max-w-md">
+      <div className="text-center">
+  <img
+    src="/logo.png"
+    alt="Silvester Salon Logo"
+    className="mx-auto mb-3 h-20 w-20 object-contain"
+  />
 
-        <h1 className="text-3xl font-bold text-center text-pink-600">
-          Salon Online Booking
-        </h1>
+  <h1 className="text-3xl font-bold text-pink-600">
+    Silvester Salon Online Booking
+  </h1>
 
-        <p className="text-center text-gray-500 mt-2">
+        <p className="text-center text-gray-900 mt-2">
           Book Your Appointment
         </p>
 
@@ -281,7 +286,7 @@ const selectedServiceData = services.find(
       Service Details
     </p>
 
-    <div className="mt-2 space-y-1 text-gray-700">
+    <div className="mt-2 space-y-1 text-gray-900">
 
       <p>
         💰 <strong>Price:</strong> Rs. {selectedServiceData.price}
@@ -378,11 +383,11 @@ const selectedServiceData = services.find(
 
       <div className="text-5xl mb-4">✅</div>
 
-      <h2 className="text-2xl font-bold text-green-600">
+      <h2 className="text-2xl font-bold text-green-900">
         Booking Confirmed
       </h2>
 
-      <p className="mt-3 text-gray-600">
+      <p className="mt-3 text-gray-900">
         Thank you for your booking.
       </p>
 
