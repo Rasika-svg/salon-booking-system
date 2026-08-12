@@ -52,6 +52,9 @@ const [bookingSummary, setBookingSummary] = useState({
   time: "",
 });
   const [selectedStaff, setSelectedStaff] = useState("");
+  const selectedStaffMember = staff.find(
+  (member) => member.name === selectedStaff
+);
   const [bookedTimes, setBookedTimes] = useState<string[]>([]);
   const [date, setDate] = useState("");
 
@@ -331,6 +334,19 @@ const selectedServiceData = services.find(
     ))}
   </select>
 </div>
+{selectedStaffMember && (
+  <div className="mt-4 flex flex-col items-center">
+    <img
+      src={`/staff/${selectedStaffMember.name.toLowerCase()}.jpg`}
+      alt={selectedStaffMember.name}
+      className="h-24 w-24 rounded-full object-cover border-4 border-pink-500"
+    />
+
+    <p className="mt-2 font-semibold text-gray-900">
+      {selectedStaffMember.name}
+    </p>
+  </div>
+)}
 <div className="mt-5">
   <label className="font-semibold">
     Appointment Date
