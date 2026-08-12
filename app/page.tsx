@@ -294,7 +294,7 @@ const selectedServiceData = services.find(
   <div className="mt-4 rounded-lg bg-pink-50 border border-pink-200 p-4">
 
     <p className="font-semibold text-pink-600">
-      Service Details
+      Service Details Stating From
     </p>
 
     <div className="mt-2 space-y-1 text-gray-900">
