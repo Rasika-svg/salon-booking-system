@@ -207,8 +207,8 @@ const selectedServiceData = services.find(
   (item) => item.name === service
 );
   return (
-    <main className="min-h-screen bg-pink-50 flex items-center justify-center p-5">
-      <div className="text-center">
+    <main className="min-h-screen bg-pink-50 flex items-center justify-center text-center p-5">
+    
   <img
     src="/logo.png"
     alt="Silvester Salon Logo"
@@ -222,7 +222,6 @@ const selectedServiceData = services.find(
         <p className="text-center text-gray-900 mt-2">
           Book Your Appointment
         </p>
-        </div>
 
         <div className="mt-8">
 
