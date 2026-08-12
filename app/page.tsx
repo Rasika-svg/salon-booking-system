@@ -230,6 +230,7 @@ const selectedServiceData = services.find(
           </label>
 
           <input
+            type="fullname"
             className="border w-full p-3 rounded-lg mt-2"
             value={name}
             onChange={(e)=>setName(e.target.value)}
@@ -255,11 +256,18 @@ const selectedServiceData = services.find(
           </label>
 
           <input
-            className="border w-full p-3 rounded-lg mt-2"
-            value={phone}
-            onChange={(e)=>setPhone(e.target.value)}
-          />
+    type="tel"
+    value={phone}
+    onChange={(e) => setPhone(e.target.value)}
+    placeholder=""
+    className="w-full rounded-lg border border-gray-900 px-4 py-3"
+  />
 
+  {!phone && (
+    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-green-600 font-medium pointer-events-none">
+      WhatsApp Number
+    </span>
+  )}
         </div>
 <div className="mt-5">
   <label className="font-semibold">
