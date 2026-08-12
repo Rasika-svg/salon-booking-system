@@ -208,35 +208,37 @@ const selectedServiceData = services.find(
 );
   return (
     <main className="min-h-screen bg-pink-50 flex items-center justify-center text-center p-5">
-      <div className="text-center">
-  <img
-    src="/logo.png"
-    alt="Silvester Salon Logo"
-    className="mx-auto mb-3 h-20 w-20 object-contain"
+
+  <div className="text-center">
+
+    <img
+      src="/logo.png"
+      alt="Silvester Salon Logo"
+      className="mx-auto mb-3 h-20 w-20 object-contain"
+    />
+
+    <h1 className="text-3xl font-bold text-pink-600">
+      Silvester Salon Online Booking
+    </h1>
+
+    <p className="text-center text-gray-900 mt-2">
+      Book Your Appointment
+    </p>
+    
+<div className="mt-8">
+
+  <label className="block text-sm font-medium text-gray-900">
+    Full Name
+  </label>
+
+  <input
+    type="fullname"
+    className="border w-full p-3 rounded-lg mt-2"
+    value={name}
+    onChange={(e)=>setName(e.target.value)}
   />
-
-  <h1 className="text-3xl font-bold text-pink-600">
-    Silvester Salon Online Booking
-  </h1>
-
-        <p className="text-center text-gray-900 mt-2">
-          Book Your Appointment
-        </p>
-
-        <div className="mt-8">
-
-          <label className="block text-sm font-medium text-gray-900">
-            Full Name
-          </label>
-
-          <input
-            type="fullname"
-            className="border w-full p-3 rounded-lg mt-2"
-            value={name}
-            onChange={(e)=>setName(e.target.value)}
-          />
-
-        </div>
+</div>
+       
 <div className="mt-5">
   <label className="font-semibold">
     Email
@@ -269,6 +271,7 @@ const selectedServiceData = services.find(
       </span>
     )}
         </div>
+  </div>
 <div className="mt-5">
   <label className="font-semibold">
     Service
