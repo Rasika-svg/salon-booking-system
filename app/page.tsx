@@ -55,7 +55,9 @@ const [bookingSummary, setBookingSummary] = useState({
   const selectedStaffMember = staff.find(
   (member) => member.name === selectedStaff
 );
-  const [bookedTimes, setBookedTimes] = useState<string[]>([]);
+  const [bookedBookings, setBookedBookings] = useState<
+  { time: string; duration: number }[]
+>([]);
   const [date, setDate] = useState("");
 
   useEffect(() => {
@@ -102,32 +104,39 @@ const [bookingSummary, setBookingSummary] = useState({
 }, []);
 
 useEffect(() => {
-  if (!date) {
-    setBookedTimes([]);
+  if (!date || !selectedStaff) {
+    setBookedBookings([]);
     return;
   }
 
   const bookingQuery = query(
-  collection(db, "bookings"),
-  where("date", "==", date),
-  where("staff", "==", selectedStaff)
-);
+    collection(db, "bookings"),
+    where("date", "==", date),
+    where("staff", "==", selectedStaff)
+  );
 
   const unsubscribeBookings = onSnapshot(
     bookingQuery,
     (snapshot) => {
-      const times = snapshot.docs.map(
-        (doc) => doc.data().time as string
-      );
+      const bookings = snapshot.docs.map((doc) => {
+        const data = doc.data();
 
-      setBookedTimes(times);
+        const serviceData = services.find(
+          (item) => item.name === data.service
+        );
+
+        return {
+          time: data.time as string,
+          duration: serviceData?.duration || 30,
+        };
+      });
+
+      setBookedBookings(bookings);
     }
   );
 
   return () => unsubscribeBookings();
-
-
-}, [date, selectedStaff]);
+}, [date, selectedStaff, services]);
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -206,9 +215,29 @@ setShowSuccess(true);
     alert("Error saving booking");
   }
 };
+
+const timeToMinutes = (time: string) => {
+  const [hours, minutes] = time.split(":").map(Number);
+  return hours * 60 + minutes;
+};
+
+const isTimeSlotBooked = (slotTime: string) => {
+  if (!selectedServiceData) return false;
+
+  const slotStart = timeToMinutes(slotTime);
+  const slotEnd = slotStart + selectedServiceData.duration;
+
+  return bookedBookings.some((booking) => {
+    const bookingStart = timeToMinutes(booking.time);
+    const bookingEnd = bookingStart + booking.duration;
+
+    return slotStart < bookingEnd && slotEnd > bookingStart;
+  });
+};
 const selectedServiceData = services.find(
   (item) => item.name === service
 );
+
   return (
     <main className="min-h-screen bg-pink-50 flex items-center justify-center text-center p-5">
 
@@ -373,15 +402,19 @@ const selectedServiceData = services.find(
 
   {timeSlots
   .filter((t) => t >= openingTime && t <= closingTime)
-  .map((t) => (
-    <option
-      key={t}
-      value={t}
-      disabled={bookedTimes.includes(t)}
-    >
-      {t} {bookedTimes.includes(t) ? "(Booked)" : ""}
-    </option>
-))}
+  .map((t) => {
+    const booked = isTimeSlotBooked(t);
+
+    return (
+      <option
+        key={t}
+        value={t}
+        disabled={booked}
+      >
+        {t} {booked ? "(Booked)" : ""}
+      </option>
+    );
+  })}
 </select>
 </div>
 <div className="mt-5">
