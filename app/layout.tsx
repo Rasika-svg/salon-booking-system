@@ -15,8 +15,29 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Silvester Salon Online Booking",
   description: "Book your appointment at Silvester Salon",
+
   icons: {
-    icon: "/icon.png",
+    icon: "/logo.png",
+  },
+
+  openGraph: {
+    title: "Silvester Salon Online Booking",
+    description: "Book your appointment at Silvester Salon",
+    images: [
+      {
+        url: "/logo.png",
+        width: 512,
+        height: 512,
+        alt: "Silvester Salon Logo",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary",
+    title: "Silvester Salon Online Booking",
+    description: "Book your appointment at Silvester Salon",
+    images: ["/logo.png"],
   },
 };
 
